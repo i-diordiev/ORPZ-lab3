@@ -21,8 +21,8 @@ namespace ORPZ_lab3.Decks
                 throw new Exception("Card limit exceeded.");
 
             var card = CardCreator.CreateCard(suit, value);
-            
-            if (_cards.FirstOrDefault(c => c.Suit == card.Suit && c.Value == card.Value) != null)
+            var cards = this.GetAllCards();
+            if (cards.FirstOrDefault(c => c.Suit == card.Suit && c.Value == card.Value) != null)
                 throw new Exception("This card already exists in this deck.");
             
             for (int i = 0; i < _cards.Length; i++)
@@ -37,7 +37,7 @@ namespace ORPZ_lab3.Decks
 
         public override IEnumerable<PlayingCard> GetAllCards()
         {
-            return _cards.ToArray();
+            return _cards.Where(c => c != null).ToList();
         }
     }
 }

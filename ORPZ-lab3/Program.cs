@@ -1,4 +1,5 @@
 ﻿using System;
+using ORPZ_lab3.Cards;
 using ORPZ_lab3.Decks;
 using ORPZ_lab3.FactoryMethod;
 
@@ -39,7 +40,7 @@ namespace ORPZ_lab3
                         deck = deckCreator.CreateDeck();
                         break;
                     case 2:
-                        deckCreator = new ArrayDeckCreator();
+                        deckCreator = new ListDeckCreator();
                         deck = deckCreator.CreateDeck();
                         break;
                     default:
@@ -59,10 +60,13 @@ namespace ORPZ_lab3
                 switch (GetIntFromUserInput())
                 {
                     case 1:
+                        AddCardToDeck(deck);
                         break;
                     case 2:
+                        ViewAllCards(deck);
                         break;
                     case 3:
+                        isWorking = false;
                         break;
                     default:
                         Console.WriteLine("Wrong number. Try again.");
@@ -70,6 +74,52 @@ namespace ORPZ_lab3
                 }
             }
 
+        }
+
+        private static void AddCardToDeck(Deck deck)
+        {
+            try
+            {
+                Console.WriteLine("List of possible suits: ");
+                Console.WriteLine("1. Clubs");
+                Console.WriteLine("2. Diamonds");
+                Console.WriteLine("3. Hearts");
+                Console.WriteLine("4. Spades");
+                Console.Write("Select suit: ");
+                var suitNum = GetIntFromUserInput();
+
+                Console.WriteLine();
+                Console.WriteLine("List of possible values: ");
+                Console.WriteLine("1. Ace");
+                Console.WriteLine("2. '2'");
+                Console.WriteLine("3. '3'");
+                Console.WriteLine("4. '4'");
+                Console.WriteLine("5. '5'");
+                Console.WriteLine("6. '6'");
+                Console.WriteLine("7. '7'");
+                Console.WriteLine("8. '8'");
+                Console.WriteLine("9. '9'");
+                Console.WriteLine("10. '10'");
+                Console.WriteLine("11. Jack");
+                Console.WriteLine("12. Queen");
+                Console.WriteLine("13. King");
+                var valueNum = GetIntFromUserInput();
+                
+                deck.AddCard(suitNum, valueNum);
+                Console.WriteLine("Card added successfully.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        
+        private static void ViewAllCards(Deck deck)
+        {
+            Console.WriteLine("List of cards: ");
+            var cards = deck.GetAllCards();
+            foreach (var card in cards)
+                Console.WriteLine($"Suit: " + card.Suit + "      Value: " + card.Value);
         }
     }
 }

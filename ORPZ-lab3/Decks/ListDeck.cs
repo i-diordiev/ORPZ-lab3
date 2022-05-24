@@ -30,7 +30,7 @@ namespace ORPZ_lab3.Decks
 
         public override IEnumerable<PlayingCard> GetAllCards()
         {
-            return _cards.ToArray();
+            return _cards.ToList();
         }
     }
 }
