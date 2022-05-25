@@ -1,11 +1,10 @@
 ﻿using System;
-using ORPZ_lab3.Cards;
 using ORPZ_lab3.Decks;
 using ORPZ_lab3.FactoryMethod;
 
 namespace ORPZ_lab3
 {
-    class Program
+    public static class Program
     {
         private static int GetIntFromUserInput()
         {
@@ -22,13 +21,13 @@ namespace ORPZ_lab3
             }
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Deck deck = null;
-            IDeckCreator deckCreator = null;
 
             do
             {
+                IDeckCreator deckCreator;
                 Console.WriteLine("Types of deck:");
                 Console.WriteLine("1. Deck based on array.");
                 Console.WriteLine("2. Deck based on linked list.");
@@ -119,7 +118,7 @@ namespace ORPZ_lab3
             Console.WriteLine("List of cards: ");
             var cards = deck.GetAllCards();
             foreach (var card in cards)
-                Console.WriteLine($"Suit: " + card.Suit + "      Value: " + card.Value);
+                Console.WriteLine($"Suit: {card.Suit}      Value: {card.Value}");
         }
     }
 }

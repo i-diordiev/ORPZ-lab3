@@ -21,7 +21,7 @@ namespace ORPZ_lab3.Decks
                 throw new Exception("Card limit exceeded.");
 
             var card = CardCreator.CreateCard(suit, value);
-            var cards = this.GetAllCards();
+            var cards = GetAllCards();
             if (cards.FirstOrDefault(c => c.Suit == card.Suit && c.Value == card.Value) != null)
                 throw new Exception("This card already exists in this deck.");
             
