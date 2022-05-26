@@ -31,7 +31,7 @@ namespace ORPZ_lab3
 
             do
             {
-                IDeckCreator deckCreator;
+                DeckCreator deckCreator;
                 Console.WriteLine("Types of deck:");
                 Console.WriteLine("1. Deck based on array.");
                 Console.WriteLine("2. Deck based on linked list.");

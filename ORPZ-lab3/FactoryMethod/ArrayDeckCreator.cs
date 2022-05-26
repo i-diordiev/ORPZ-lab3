@@ -2,9 +2,9 @@
 
 namespace ORPZ_lab3.FactoryMethod
 {
-    public class ArrayDeckCreator : IDeckCreator
+    public class ArrayDeckCreator : DeckCreator
     {
-        public Deck CreateDeck()
+        public override Deck CreateDeck()
         {
             return new ArrayDeck();
         }
